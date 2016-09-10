@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="qrc:///qtwebchannel/qwebchannel.js"></script>
+    <script type="text/javascript">
+
+      var canvas ;
+      var widget ;
+
+      // Initialise web page
+      function initialize() {	
+	    initialize_qt() ;
+        canvas = document.getElementById('canvas') ;
+        canvas.addEventListener('click', on_canvas_click, false) ;
+      }
+
+      // Initialise connection to QT C++
+      function initialize_qt() {
+        if (typeof qt != 'undefined') new QWebChannel(qt.webChannelTransport, function(channel) {
+            widget = channel.objects.widget;
+        } );
+      }
+
+      // function, can be called from C++ or from Javascript
+      function addDot(x, y, sz, c) {
+        var ctx = canvas.getContext("2d") ;
+        ctx.fillStyle = c ;
+        ctx.fillRect(x-sz/2, y-sz/2, sz, sz) ;
+      }
+
+      // Event handler for demonstration
+      function on_canvas_click(ev) {
+        var x = ev.clientX - canvas.offsetLeft ;
+        var y = ev.clientY - canvas.offsetTop ;
+        addDot(x, y, 18, '#FF0000') ;
+        updated(x, y) ;
+      }
+
+      // Javascript function passes parameter to C++
+      function updated(x, y) {
+        if (typeof widget !== 'undefined') {
+          widget.slotJsUpdated(x, y) ;
+        }
+      }
+
+    </script>
+  </head>
+
+  <body onload="initialize()" bgcolor="#920303">
+    <canvas id="canvas" width="400" height="150"></canvas>
+  </body>
+
+</html>
+
