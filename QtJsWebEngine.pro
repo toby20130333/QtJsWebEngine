@@ -9,7 +9,7 @@ QT       += network webenginewidgets webchannel
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = jsDemo
+TARGET = QtJsWebEngine
 TEMPLATE = app
 
 
@@ -27,4 +27,5 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     resources.qrc
 
-DISTFILES +=
+DISTFILES += \
+    QtQuickWebEngine.qml

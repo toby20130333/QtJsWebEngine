@@ -24,10 +24,16 @@ public:
 
 public slots:
     void slotJsUpdated(int x, int y) ;// Callback from javascript (save X & Y)
+
 private:
     int sX, sY ;                     // X and Y coordinate stores
     QWebChannel channel ;  // Channel for C++ to Javascript comms
+
 private:
+    ///
+    /// 此处声明多个私有方法
+    /// 通过c++注入代码字符串进行通知js
+    ///
     void addDot(int x, int y, int sz, QString colour) ;   // Creates dot at current X and Y
 };
 

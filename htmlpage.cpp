@@ -7,9 +7,7 @@ HtmlPage::HtmlPage(QWidget *parent) :
     sX = 0 ; sY = 0 ;
     // Set up the communications channel
     this->page()->setWebChannel(&channel) ;
-    //将此单例注入到js端
     channel.registerObject("widget", WebObjectInstance::instance());
-    //连接信号槽
     connect(WebObjectInstance::instance(),SIGNAL(signalCursorMoved(int,int)),this,SLOT(slotJsUpdated(int,int)));
     // Set the page content
     setUrl(QUrl("qrc:/index.html")) ;
@@ -18,12 +16,7 @@ HtmlPage::HtmlPage(QWidget *parent) :
 HtmlPage::~HtmlPage()
 {
 }
-///
-/// \brief HtmlPage::slotJsUpdated
-/// \param x
-/// \param y
-///  通过单例更新C++界面内容 同时可以通知js刷新UI
-///
+
 void HtmlPage::slotJsUpdated(int x, int y)
 {
     qDebug("slotJsUpdated");

@@ -2,11 +2,7 @@
 #define WEBOBJECTINSTANCE_H
 
 #include <QObject>
-///
-/// \brief The WebObjectInstance class
-/// 该单例可以注入JS
-/// 可以直接操作JS和被JS操作
-///
+
 class WebObjectInstance : public QObject
 {
     Q_OBJECT
