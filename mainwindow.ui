@@ -85,6 +85,9 @@
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>40</width>
@@ -92,6 +95,19 @@
           </size>
          </property>
         </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>根据鼠标点击html画布通知C++的UI更新鼠标的位置</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -120,7 +136,7 @@
      <x>0</x>
      <y>0</y>
      <width>465</width>
-     <height>27</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
